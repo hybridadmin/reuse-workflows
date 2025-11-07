@@ -40,7 +40,7 @@ jobs:
 
       - name: Install test dependencies.
         run: |
-          pip3 install ansible-core==2.18.11 molecule molecule-plugins[docker]
+          pip3 install ansible==9.9.0 molecule molecule-plugins[docker]
 
       - name: Run Molecule test.
         run: |
