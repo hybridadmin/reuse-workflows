@@ -38,6 +38,12 @@ jobs:
         with:
           python-version: "${{ inputs.python_version }}"
 
+      - name: Generate random name
+        id: random_str
+        run: |
+          RANDOM_STRING=$(head /dev/urandom | tr -dc a-z0-9 | head -c 10)
+          echo "random_string=$RANDOM_STRING" >> $GITHUB_OUTPUT
+
       - name: Install test dependencies.
         run: |
           pip3 install ansible==11.12.0 molecule molecule-plugins[docker]
@@ -51,3 +57,4 @@ jobs:
           ANSIBLE_FORCE_COLOR: "1"
           MOLECULE_DISTRO: ${{ inputs.distro_image }}
           MOLECULE_DISTRO_TAG: ${{ inputs.distro_tag }}
+          ROLE_NAME: ${{ steps.random_str.outputs.random_string }}
