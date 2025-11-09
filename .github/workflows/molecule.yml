@@ -24,7 +24,7 @@ permissions:
 
 jobs:
   molecule:
-    name: run_test
+    name: run_molecule
     runs-on: ubuntu-latest
 
     steps:
